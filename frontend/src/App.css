@@ -1,0 +1,117 @@
+
+
+
+html {
+  /* height: 99%;
+  max-width: 99%; */
+}
+
+#area {
+  border-radius: .8em;
+  width: 25%;
+  height: 20vh
+}
+
+body {
+  background-color: rgb(59, 127, 182);
+  color: white;
+  text-shadow: 1px 2px black;
+
+  /* word-break: break-all; */
+}
+
+#frame {
+  /* margin-top: 10%;
+  width: 100vw;
+  padding-top: 56.25%;
+  /* height: 90vh; */
+  /* padding-top: 56.25%; */
+  /* position: relative; */
+
+  /* position: absolute; */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 50%;
+
+  box-shadow: 0px 0px 0px 8px rgba(0, 0, 0, 0.1);
+}
+
+#container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+#content {
+  /* margin-top: 50%; */
+
+  /* bottom: 0;
+  flex-basis: 1; */
+}
+
+#un {
+  font-size: 1em;
+  font-weight: 800;
+}
+
+#pw {
+  font-size: 1em;
+  font-weight: 800;
+}
+
+#Password {width: 25%}
+
+.bt {
+  margin: 3px;
+}
+
+.App {
+  margin-top: 10%;
+  text-align: center;
+  font-weight: 500;
+}
+
+input {
+  border-radius: 0.7em;
+  margin-bottom: 12px;
+  font-size: 1.4em;
+}
+
+#dataReturn {
+  font-size: 1em;
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+#latestData {
+  flex-wrap: wrap;
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+@media (max-width: 575.98px) { 
+#area {
+  border-radius: .8em;
+  width: 70%;
+  height: 20%
+}
+ }
+
+@media (min-width: 768.98px) { 
+
+.App {margin-top: 10px;}
+
+#area {
+  border-radius: .8em;
+  width: 30%;
+  height: 65%
+}
+
+}
+
+
