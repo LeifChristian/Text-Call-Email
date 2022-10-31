@@ -180,7 +180,7 @@ class CallTextEmail extends Component {
     // }
   
     if (phoneTrim.length !== 10) {
-      alert("Tha's not a phone number, brahh! 🛸");
+      alert("Tha's not a phone number, sending to default 🛸");
     
     } else {
       console.log();
@@ -231,7 +231,7 @@ class CallTextEmail extends Component {
     // alert(phoneTrim);
 
     if (phoneTrim.length !== 10) {
-      alert("Tha's not a phone number, brahh! 🛸");
+      alert("Tha's not a phone number, sending to default 🛸");
     
     } else {
       console.log();
@@ -267,7 +267,7 @@ class CallTextEmail extends Component {
     const enteredEmail = prompt("Enter email");
 
     if (enteredEmail.length <= 1) {
-      alert("Tha's not an email, brahh! 🛸");
+      alert("Tha's not an email, sending to default 🛸");
     
     } else {
       console.log();
