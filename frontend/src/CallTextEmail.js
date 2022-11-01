@@ -5,7 +5,7 @@ const { REACT_APP_MY_ENV } = process.env;
 
 // to enable auto login, make value: "111" in state, and put this.handleSubmit() inside of componentDidMount
 //to disable auto login, make value null and remove this.handleSubmit() from componentDidMount
- 
+
 class CallTextEmail extends Component {
   constructor(props) {
     super(props);
@@ -33,18 +33,19 @@ class CallTextEmail extends Component {
     this.getPM2 = this.getPM2.bind(this);
     this.sendText = this.sendText.bind(this);
     this.sendEmail = this.sendEmail.bind(this);
-    this.sendVoice = this.sendVoice.bind(this)
+    this.sendVoice = this.sendVoice.bind(this);
     this.clear = this.clear.bind(this);
   }
 
-  componentDidMount() { 
-
-     this.handleSubmit();
+  componentDidMount() {
+    this.handleSubmit();
   }
 
   async handleSubmit(event) {
     event?.preventDefault();
-     this.state.password == REACT_APP_MY_ENV ?  this.setState({ sessionID: 'ok' }) :  (alert('no'))
+    this.state.password == REACT_APP_MY_ENV
+      ? this.setState({ sessionID: "ok" })
+      : alert("no");
 
     // alert("A name was submitted: " + this.state.value + this.state.value1);
 
@@ -146,8 +147,11 @@ class CallTextEmail extends Component {
     window.location.reload(false);
   }
 
-  clear(){    this.setState({ pm2Data: "" });
-  this.setState({ latestData: "" }); document.getElementById("area").value=''}
+  clear() {
+    this.setState({ pm2Data: "" });
+    this.setState({ latestData: "" });
+    document.getElementById("area").value = "";
+  }
 
   async sendText() {
     let theStuff;
@@ -178,25 +182,21 @@ class CallTextEmail extends Component {
     // } else {
     //   console.log();
     // }
-  
+
     if (phoneTrim.length !== 10) {
       alert("Tha's not a phone number, sending to default 🛸");
-    
     } else {
       console.log();
     }
 
     const userData = {
       Data: `Leif says: ${theStuff}`,
-      Number: phoneTrim
-        ? `+1${phoneTrim}`
-        : "+14065390742",
+      Number: phoneTrim ? `+1${phoneTrim}` : "+14065390742",
     };
 
     await axios.post("/sendText", userData).then((response) => {
       console.log(response);
     });
-
   }
 
   async sendVoice() {
@@ -223,34 +223,29 @@ class CallTextEmail extends Component {
       .replaceAll("-", "")
       .replaceAll(" ", "");
 
-      if (phoneTrim.charAt(0) == 1 || phoneTrim.charAt(0)=="1" ) {
-
-        phoneTrim = phoneTrim.slice(1)
-      }
+    if (phoneTrim.charAt(0) == 1 || phoneTrim.charAt(0) == "1") {
+      phoneTrim = phoneTrim.slice(1);
+    }
 
     // alert(phoneTrim);
 
     if (phoneTrim.length !== 10) {
       alert("Tha's not a phone number, sending to default 🛸");
-    
     } else {
       console.log();
     }
 
     let timeElapsed = Date.now();
-    const today = new Date(timeElapsed)
+    const today = new Date(timeElapsed);
 
     const userData = {
       Data: `Leif says!! ${theStuff}`,
-      Number: phoneTrim
-        ? `+1${phoneTrim}`
-        : "+14065390742",
+      Number: phoneTrim ? `+1${phoneTrim}` : "+14065390742",
     };
 
     await axios.post("/sendVoice", userData).then((response) => {
       console.log(response);
     });
-
   }
 
   async sendEmail() {
@@ -268,19 +263,20 @@ class CallTextEmail extends Component {
 
     if (enteredEmail.length <= 1) {
       alert("Tha's not an email, sending to default 🛸");
-    
     } else {
       console.log();
     }
 
-    const userData = { Data: theStuff, Email: enteredEmail.includes('@') ? enteredEmail : "mtmusicandart@gmail.com" };
+    const userData = {
+      Data: theStuff,
+      Email: enteredEmail.includes("@")
+        ? enteredEmail
+        : "mtmusicandart@gmail.com",
+    };
 
     await axios.post("/sendEmail", userData).then((response) => {
       console.log(response);
     });
-
-
-
   }
 
   render() {
@@ -295,27 +291,27 @@ class CallTextEmail extends Component {
       if (this.state.sessionID !== "") {
         return (
           <>
-
             <div id="dataReturn">
               {this.state.latestData === "[]"
                 ? this.setState({ latestData: "none" })
                 : ""}
-              {this.state.latestData
-                ? this.state.latestData
-                  
-                : ""}
+              {this.state.latestData ? this.state.latestData : ""}
             </div>
 
             <div id="dataReturn">
-              {this.state.pm2Data
-                ? this.state.pm2Data
-                : ""}
+              {this.state.pm2Data ? this.state.pm2Data : ""}
             </div>
-<br />
+            <br />
             <form className="">
-      <textarea id = 'area' type="text" rows="3" name="body" onChange={this.handleChange} />
-    </form>
-<br />
+              <textarea
+                id="area"
+                type="text"
+                rows="3"
+                name="body"
+                onChange={this.handleChange}
+              />
+            </form>
+            <br />
 
             <button className="btn btn-primary bt" onClick={this.sendVoice}>
               Send Voice
@@ -323,10 +319,13 @@ class CallTextEmail extends Component {
             <button className="btn btn-info bt" onClick={this.sendText}>
               Send Text
             </button>
-            
+
             <button className="btn btn-success bt" onClick={this.sendEmail}>
               Send Email
-            </button><br></br><br></br><button className="btn btn-dark bt" onClick={this.clear}>
+            </button>
+            <br></br>
+            <br></br>
+            <button className="btn btn-dark bt" onClick={this.clear}>
               Clear
             </button>
           </>
@@ -340,7 +339,6 @@ class CallTextEmail extends Component {
         return (
           <>
             <form onSubmit={this.handleSubmit}>
-
               <label for="Password" id="pw">
                 Password{" "}
               </label>
@@ -370,7 +368,6 @@ class CallTextEmail extends Component {
               <h3>Call Text Email</h3>
               {loginForm()}
               {ifSessionID()}
-              
               {renderAuthButton()} <br />
               <br></br>
             </div>
