@@ -14,8 +14,8 @@ const corsOpts = {
 };
 app.use(cors(corsOpts));
 
-const accountSid = "AC6ebe7209c21cd5fbcdb66a63e691737f";
-const authToken = "75b1c5632fb475c7cc571e5d879ec5cd";
+const accountSid = "";
+const authToken = "";
 const client = require("twilio")(accountSid, authToken);
 
 router.get("/", function (req, res, next) {
